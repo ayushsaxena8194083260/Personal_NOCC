@@ -1,0 +1,36 @@
+.row{
+    margin:20px;
+}
+.col{
+    align-self: center;
+}
+.btn-primary{
+    background: linear-gradient(to bottom, #6bbeff 0%,#1467a8 100%);
+    transition: 0.5s;
+}
+.btn-primary:hover{
+    background: linear-gradient(to bottom, #1467a8 0%,#6bbeff 100%);
+    transition: 0.5s;
+}
+.form-control{
+    width:90%;
+}
+.card-header{
+    text-align: center;
+    color:#008FCE;
+    font-weight: 600;
+}
+.form-label{
+    font-size:13px;
+}
+.addEdit-vendor-card{
+    width:90%;
+    margin:auto;
+}
+.form-required{
+    color: red;;
+}
+.img-preview{
+    height:100px;
+    width:100px;
+}

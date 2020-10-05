@@ -1,0 +1,56 @@
+table#t-list td , table#t-list div td {
+    font-size: 13px;
+    line-height: 14px;
+    padding: /*10px 1px*/ 10px;
+    word-wrap: break-word;
+    border: 1px solid #c7c7c7;
+}
+table#t-list{
+    margin: 10px auto 0;
+    width: 100%;
+}
+table#t-list tr , table#t-list div tr{
+    border-bottom: 1px solid #c7c7c7;
+}
+table#t-list th, table#t-list div th {
+    background-color: #464646;
+    color: #FFFFFF;
+    line-height: 20px;
+    padding: 5px 10px;
+    text-align: left;
+    text-transform: capitalize;
+}
+.edit-form-pmtask table#t-list div tr:not(:first-child) td {
+    border-right: 1px solid #c7c7c7;
+    vertical-align: middle;
+}
+textarea {
+    min-height: 50px;
+    border: 1px solid #D2D2D2;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 4px;
+    width: 90%;
+    height: 24px;
+    -moz-box-shadow: 2px 2px 2px 0px #e2e2e2 inset;
+    -webkit-box-shadow: 2px 2px 2px 0px #e2e2e2 inset;
+    box-shadow: 2px 2px 2px 0px #e2e2e2 inset;
+}
+.pm-task-text {
+    width: 255px;
+}
+
+
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align:center
+  }
+  
+  .table td, th {
+    border: 2px solid blue;
+   
+    padding: 8px;
+    width: 60px
+  }

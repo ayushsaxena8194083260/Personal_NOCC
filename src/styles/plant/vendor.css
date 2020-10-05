@@ -1,0 +1,27 @@
+.ag-theme-material .ag-header {
+  background-color: #333;
+  color: #fff;
+}
+.ag-theme-material
+  .ag-header-group-cell:not(.ag-column-resizing)
+  + .ag-header-group-cell:hover,
+.ag-theme-material
+  .ag-header-group-cell:not(.ag-column-resizing)
+  + .ag-header-group-cell.ag-column-resizing,
+.ag-theme-material
+  .ag-header-cell:not(.ag-column-resizing)
+  + .ag-header-cell:hover,
+.ag-theme-material
+  .ag-header-cell:not(.ag-column-resizing)
+  + .ag-header-cell.ag-column-resizing,
+.ag-theme-material .ag-header-group-cell:first-of-type:hover,
+.ag-theme-material .ag-header-group-cell:first-of-type.ag-column-resizing,
+.ag-theme-material .ag-header-cell:first-of-type:hover,
+.ag-theme-material .ag-header-cell:first-of-type.ag-column-resizing {
+  background-color: #333;
+  color: #fff;
+}
+.products-actions-link {
+  margin-right: 4px;
+  color: #135c8a;
+}

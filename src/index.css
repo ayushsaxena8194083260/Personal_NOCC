@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: green; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.map {
+  width: 39% !important;
+  height:99% !important
+}
+.weatherImage{
+  width: 30px;
+  height: 30px;
+  
+}
+.card1 {
+  width: 60% !important;
+  height: 100% !important;
+  display: inline-block !important;
+  padding: 0.5% !important;
+  float: right !important;
+}
+.designMargin{
+  margin-top: 65px !important;
+
+}
+
+@media only screen and (max-width: 768px) {
+  .App-header {
+    /* background-color: #282c34 */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin-left: 0px;
+    background: #d0ecf8 !important;
+    background: radial-gradient(ellipse at center, #d0ecf8 0%, #8abbe1 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0ecf8', endColorstr='#8abbe1', GradientType=1 );
+  }
+  .map {
+    width: 100% !important;
+    /* margin-left: 64px !important; */
+    padding-bottom: 20px;
+  }
+  .card1 {
+    width: 100% !important;
+    margin-top: 90px !important;
+    height: 100% !important;
+    /* margin-left: 84px !important; */
+  }
+  .card-body {
+    padding: 10px!important;
+  }
+  .modal-main {
+    overflow-x: scroll;
+  }
+  .Type-text {
+    width: 100% !important;
+  }
+  /* .small-main-content{
+    margin-left: 70px !important;
+  } */
+  .small_percent_width {
+    max-width: 5%;
+    padding-bottom: 0;
+}
+/* .width-Analytics{
+  margin-left: 80px !important;
+
+} */
+.boxshow{
+  width:92%
+}
+.form-control-plant{
+  width: 90% !important;
+}
+.display{
+  display: none;
+}
+.designMargin{
+  margin-top: 0px !important;
+
+}
+}

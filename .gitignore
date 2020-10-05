@@ -1,0 +1,11 @@
+/node_modules/
+.project
+/.settings/
+src/.DS_Store
+src/components/.DS_Store
+/build/
+src/components/.DS_Store
+src/.DS_Store
+.DS_Store
+src/.DS_Store
+src/components/.DS_Store

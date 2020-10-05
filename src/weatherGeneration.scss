@@ -1,0 +1,13 @@
+.map{
+    width: "39%";
+     height: "90%";
+      border: "1px solid #3333336e";
+      /* flex-direction: row; */
+  }
+  @media only screen and (max-width: 600px) {
+   .map{
+     width: 100%;
+  
+   }
+  
+  }

@@ -1,0 +1,77 @@
+.row {
+  margin: 20px;
+}
+.col {
+  align-self: center;
+}
+.btn-primary {
+  background: linear-gradient(to bottom, #6bbeff 0%, #1467a8 100%);
+  transition: 0.5s;
+}
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #1467a8 0%, #6bbeff 100%);
+  transition: 0.5s;
+}
+.card-header {
+  text-align: center;
+  color: #008fce;
+  font-weight: 600;
+}
+.form-control {
+  width: 90%;
+}
+.form-label {
+  font-size: 13px;
+}
+.add-plant-card {
+  width: 90%;
+  margin: auto;
+}
+.form-required {
+  color: red;
+}
+.img-preview {
+  height: 100px;
+  width: 100px;
+}
+.addEditPlantName {
+  padding: 7px 5px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+._react_fileupload_form_content > div {
+  padding: 5px;
+  box-shadow: 0 1px 5px rgba(100, 100, 100, 0.2) inset;
+  -webkit-box-shadow: 0 1px 5px rgba(100, 100, 100, 0.2) inset;
+  border-radius: 5px;
+}
+._react_fileupload_form_content > input {
+  color: #ffffff;
+  min-width: 113px;
+  height: 38px;
+  margin-top: 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  text-shadow: 0 1px 2px #000;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  text-transform: capitalize;
+  font-family: Verdana, Geneva, sans-serif;
+  background: #6bbeff;
+  background: -moz-linear-gradient(top, #6bbeff 0%, #1467a8 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #6bbeff),
+    color-stop(100%, #1467a8)
+  );
+  background: -webkit-linear-gradient(top, #6bbeff 0%, #1467a8 100%);
+  background: -o-linear-gradient(top, #6bbeff 0%, #1467a8 100%);
+  background: -ms-linear-gradient(top, #6bbeff 0%, #1467a8 100%);
+  background: linear-gradient(to bottom, #6bbeff 0%, #1467a8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6bbeff', endColorstr='#1467a8',GradientType=0 );
+}
