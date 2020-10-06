@@ -26,7 +26,12 @@
     "linq": "^3.2.3",
     "moment": "^2.29.0",
     "node-sass": "^4.14.1",
+<<<<<<< HEAD
     "query-string": "^6.13.5",
+=======
+    "nodemon": "^2.0.4",
+    "query-string": "^6.12.1",
+>>>>>>> 0af12e70b70bc24bf0fb2da9ebc13f51a500a95e
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-bootstrap-time-picker": "^2.0.1",
