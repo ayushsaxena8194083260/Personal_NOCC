@@ -493,66 +493,67 @@ class PreventiveMaintainance extends Component {
             let status = false;
             let completedTaksCount = 0;
 
-            if (stateDup.remarkStatusDetails !== null) {
-                for (var i = 0; i < stateDup.taskdetails.length; i++) {
-                    for (var j = 0; j < stateDup.remarkStatusDetails.length; j++) {
-                        status = false;
-                        if (stateDup.taskdetails[i].pmTaskId === stateDup.remarkStatusDetails[j].pmTaskId) {
-                            stateDup.taskdetails[i]["pm_remark_status"] = stateDup.remarkStatusDetails[j];
-                            status = true;
-                            if (stateDup.remarkStatusDetails[j].pmChecked === "YES") {
-                                completedTaksCount++;
-                            }
-                            break;
-                        }
-                        if (status === false && j === stateDup.remarkStatusDetails.length - 1) {
-                            stateDup.taskdetails.splice(i, 1);
-                            i--;
-                            break;
-                        }
-                    }
-                }
-
-                stateDup.taskdetails["completedTaskCount"] = completedTaksCount;
-
-                if (stateDup.activityId !== '1') {
-                    let k = 1;
-                    let m = 0;
-                    stateDup.taskGroup = [];
-                    for (var i = 0; i < this.props.pmTaskGroup.length; i++) {
-                        let pmTaskGroupIdLocal = this.props.pmTaskGroup[i].pmTaskGroupId;
-                        let pmTaskGroupNameLocal = this.props.pmTaskGroup[i].pmTaskGroupName;
-                        stateDup.taskGroup[i] = stateDup.taskdetails.filter(taskGroup => taskGroup.pmTaskGroupId === pmTaskGroupIdLocal);
-                        if (stateDup.ac_dc_dropdown === 'AC' || stateDup.ac_dc_dropdown === 'DC') {
-                            stateDup.taskGroup[i] = stateDup.taskGroup[i].filter(taskGroup1 => taskGroup1.miscAcDc === stateDup.ac_dc_dropdown);
-                        }
-                        if (stateDup.taskGroup[i].length !== 0) {
-                            stateDup.taskGroup[i]["TaskGroupName"] = pmTaskGroupNameLocal;
-                        }
-                        else {
-                            stateDup.taskGroup[i]["TaskGroupName"] = "Invalid";
-
-                        }
-                        stateDup.taskGroup = stateDup.taskGroup.filter(taskGrp => taskGrp.TaskGroupName !== "Invalid");
-                    }
-
-
-                    for (var l = 0; l < stateDup.taskGroup.length; l++) {
-                        for (var n = 0; n < stateDup.taskGroup[l].length; n++) {
-                            stateDup.taskGroup[l][n]["SNO"] = k++;
-                            // if(stateDup.taskGroup[l][n].pm_remark_status.pm_checked === 'YES'){
-                            //     ++m;
-                            // }
-                        }
-                    }
-                    //stateDup.taskGroup['totalNoOfTasks'] = k;
-                    //stateDup.taskGroup['completedTasks'] = m;
-
-                }
-
+            if (stateDup.remarkStatusDetails) {
                 stateDup.isNew = false
             } else {
+                stateDup.remarkStatusDetails = []
                 stateDup.isNew = true
+            }
+
+            for (var i = 0; i < stateDup.taskdetails.length; i++) {
+                for (var j = 0; j < stateDup.remarkStatusDetails.length; j++) {
+                    status = false;
+                    if (stateDup.taskdetails[i].pmTaskId === stateDup.remarkStatusDetails[j].pmTaskId) {
+                        stateDup.taskdetails[i]["pm_remark_status"] = stateDup.remarkStatusDetails[j];
+                        status = true;
+                        if (stateDup.remarkStatusDetails[j].pmChecked === "YES") {
+                            completedTaksCount++;
+                        }
+                        break;
+                    }
+                    if (status === false && j === stateDup.remarkStatusDetails.length - 1) {
+                        stateDup.taskdetails.splice(i, 1);
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            stateDup.taskdetails["completedTaskCount"] = completedTaksCount;
+
+            if (stateDup.activityId !== '1') {
+                let k = 1;
+                let m = 0;
+                stateDup.taskGroup = [];
+                for (var i = 0; i < this.props.pmTaskGroup.length; i++) {
+                    let pmTaskGroupIdLocal = this.props.pmTaskGroup[i].pmTaskGroupId;
+                    let pmTaskGroupNameLocal = this.props.pmTaskGroup[i].pmTaskGroupName;
+                    stateDup.taskGroup[i] = stateDup.taskdetails.filter(taskGroup => taskGroup.pmTaskGroupId === pmTaskGroupIdLocal);
+                    if (stateDup.ac_dc_dropdown === 'AC' || stateDup.ac_dc_dropdown === 'DC') {
+                        stateDup.taskGroup[i] = stateDup.taskGroup[i].filter(taskGroup1 => taskGroup1.miscAcDc === stateDup.ac_dc_dropdown);
+                    }
+                    if (stateDup.taskGroup[i].length !== 0) {
+                        stateDup.taskGroup[i]["TaskGroupName"] = pmTaskGroupNameLocal;
+                    }
+                    else {
+                        stateDup.taskGroup[i]["TaskGroupName"] = "Invalid";
+
+                    }
+                    stateDup.taskGroup = stateDup.taskGroup.filter(taskGrp => taskGrp.TaskGroupName !== "Invalid");
+                }
+
+
+                for (var l = 0; l < stateDup.taskGroup.length; l++) {
+                    for (var n = 0; n < stateDup.taskGroup[l].length; n++) {
+                        stateDup.taskGroup[l][n]["SNO"] = k++;
+                        // if(stateDup.taskGroup[l][n].pm_remark_status.pm_checked === 'YES'){
+                        //     ++m;
+                        // }
+                    }
+                }
+                //stateDup.taskGroup['totalNoOfTasks'] = k;
+                //stateDup.taskGroup['completedTasks'] = m;
+
             }
 
             stateDup.showActivity = true;
@@ -672,7 +673,7 @@ class PreventiveMaintainance extends Component {
                     </div>
                 </div>
                 {(this.state.activityType === 'Daily' && this.state.showActivity === true && this.state.userStatusDetails) ? <DailyPmCheckList data={this.state} /> : ''}
-                {(this.state.activityType === 'Monthly' && this.state.showActivity === true) ? <MonthlyPmCheckList data={this.state} /> : ''}
+                {(this.state.activityType === 'Monthly' && this.state.showActivity === true && this.state.userStatusDetails) ? <MonthlyPmCheckList data={this.state} /> : ''}
                 {(this.state.activityType === 'Bi-Monthly' && this.state.showActivity === true) ? <BimonthlyPmCheckList data={this.state} /> : ''}
                 {(this.state.activityType === 'Quarterly' && this.state.showActivity === true) ? <QuarterlyPmCheckList data={this.state} /> : ''}
                 {(this.state.activityType === 'HalfYearly' && this.state.showActivity === true) ? <HalfYearlyPmCheckList data={this.state} /> : ''}

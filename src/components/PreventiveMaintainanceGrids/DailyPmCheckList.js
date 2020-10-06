@@ -43,28 +43,58 @@ class DailyPdfDownload extends Component {
     }
 
     submit = () => {
-        console.log(this.state, 'sate');
-        let value = this.state.userStatusDetails[0]
+        if (userDetails && userDetails.userId) {
+            console.log(this.state, 'sate');
+            let value = this.state.userStatusDetails[0]
 
-        const data = {
-            "createdDate": value.createdDate,
-            "modifiedDate": value.modifiedDate,
-            "plantId": value.plantId,
-            "pmActivityId": value.pmActivityId,
-            "pmUserStatusId": value.pmUserStatusId,
-            "specialRemarks": value.specialRemarks,
-            "userId": value.userId,
-            "verfierName": value.userName,
-            "verifierDate": new Date(),
-            "verifierId": userDetails.userId
+            let data = {}
+
+            if (this.state.isNew) {
+                data = {
+                    "createdDate": this.state.date,
+                    "plantId": this.state.plantId,
+                    "pmActivityId": this.state.activityId,
+                    "specialRemarks": value.specialRemarks,
+                    "userId": userDetails.userId
+                }
+            } else {
+                data = {
+                    "createdDate": value.createdDate,
+                    "modifiedDate": value.modifiedDate,
+                    "plantId": value.plantId,
+                    "pmActivityId": value.pmActivityId,
+                    "pmUserStatusId": value.pmUserStatusId,
+                    "specialRemarks": value.specialRemarks,
+                    "userId": value.userId,
+                    "verfierName": value.userName,
+                    "verifierDate": new Date(),
+                    "verifierId": userDetails.userId
+                }
+            }
+            axios.post('http://noccwebstaging-env.eba-sutf6wep.us-east-1.elasticbeanstalk.com/preventivemaintainance/createOrUpdatePMUserStatus', data)
+                .then((response) => {
+                    let allApiCallLength = this.state.taskdetails.length
+                    this.state.taskdetails
+                        .forEach(taskdetails => {
+                            taskdetails = {
+                                "pmChecked": taskdetails.pm_remark_status.pmChecked,
+                                "pmRemarks": taskdetails.pm_remark_status.pmRemarks,
+                                "pmStatus": taskdetails.pm_remark_status.pmStatus,
+                                "pmTaskId": taskdetails.pmTaskId,
+                                "pmUserStatusId": response.data.data.pmUserStatusId
+                            }
+                            axios.post('http://noccwebstaging-env.eba-sutf6wep.us-east-1.elasticbeanstalk.com/preventivemaintainance/createOrUpdatePMRemarkStatus', taskdetails)
+                                .then((response) => {
+                                    allApiCallLength -= 1
+                                    if (allApiCallLength < 1) {
+                                        window.location.reload()
+                                    }
+                                })
+                        })
+                })
+        } else {
+            console.log('User id not found.')
         }
-        axios.post('http://noccwebstaging-env.eba-sutf6wep.us-east-1.elasticbeanstalk.com/preventivemaintainance/createOrUpdatePMUserStatus', data)
-            .then(function (response) {
-                console.log(response);
-                alert("Data Verified");
-                window.location.reload();
-
-            })
     }
     render() {
         return (
@@ -171,10 +201,13 @@ class DailyPdfDownload extends Component {
                                             <tr>
 
                                                 <td valign="middle" colspan="6" align="center">
-                                                    <Button style={{ margin: "10px", fontSize: "17px" }} variant="primary" size="md" onClick={this.save}>Save</Button>
-                                                    {this.state.userStatusDetails[0].showVerified == true ?
-                                                        <Button style={{ margin: "10px", fontSize: "17px" }} variant="primary" size="md" onClick={this.submit}>Verify</Button>
-                                                        : <div></div>}
+                                                    {
+                                                        this.state.isNew
+                                                            ? <Button style={{ margin: "10px", fontSize: "17px" }} variant="primary" size="md" onClick={this.submit}>Save</Button>
+                                                            : this.state.userStatusDetails[0].showVerified
+                                                                ? <Button style={{ margin: "10px", fontSize: "17px" }} variant="primary" size="md" onClick={this.submit}>Verify</Button>
+                                                                : <div></div>
+                                                    }
                                                 </td>
                                             </tr>
                                             <tr>
